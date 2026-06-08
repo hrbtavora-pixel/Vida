@@ -380,7 +380,7 @@ async function enter(person){
   document.getElementById('gate').style.display='none';
   document.getElementById('fab').style.display='grid';
   document.getElementById('nav').style.display='flex';
-  await loadData(person); go('home');
+  await Promise.all([loadData('Henrique'), loadData('Julia')]); go('home');
 }
 function switchPerson(){ STATE.person=STATE.person==="Henrique"?"Julia":"Henrique"; document.body.dataset.person=STATE.person; toast("Agora: "+PERSON[STATE.person].label); loadData(STATE.person).then(()=>render()); }
 
@@ -551,7 +551,7 @@ let tT=null;
 function toast(msg){ const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show'); clearTimeout(tT); tT=setTimeout(()=>t.classList.remove('show'),2200); }
 
 /* ---------- init ---------- */
-seed();
+if(!CONFIG.API_URL) seed();   // só usa dados de exemplo quando NÃO há planilha conectada
 document.getElementById('gateElef').innerHTML=markImg('Henrique',72);
 document.getElementById('gateGiras').innerHTML=markImg('Julia',72);
 ['ni-home','ni-recs','ni-charts','ni-rank'].forEach((id,i)=>{ document.getElementById(id).innerHTML=ic(["home","list","chart","trophy"][i]); });
