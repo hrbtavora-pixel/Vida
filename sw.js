@@ -4,11 +4,11 @@ const CORE = [
   './',
   './index.html',
   './manifest.json',
-  './assets/icon-192.png',
-  './assets/icon-512.png',
-  './assets/apple-touch-icon.png',
-  './assets/henrique.png',
-  './assets/julia.png'
+  'icon-192.png',
+  'icon-512.png',
+  'apple-touch-icon.png',
+  'henrique.png',
+  'julia.png'
 ];
 
 self.addEventListener('install', e => {
