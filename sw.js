@@ -7,6 +7,7 @@ const CORE = [
   'icone-192.png',
   'icon-512.png',
   'apple-touch-icon.png',
+  'icon-branco.png',
   'henrique.png',
   'julia.png'
 ];
