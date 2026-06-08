@@ -534,6 +534,24 @@ document.getElementById('gateGiras').innerHTML=markImg('Julia',72);
 document.getElementById('fab').innerHTML=ic('plus');
 setThemeIcons();
 
+  /* ---------- senha de entrada ---------- */
+const APP_PASSWORD = "123456";   // troque aqui se quiser outra senha
+function tryUnlock(){
+  const i = document.getElementById('pw');
+  if(i.value === APP_PASSWORD){
+    document.getElementById('lock').style.display = 'none';
+    try{ sessionStorage.setItem('vida_unlocked','1'); }catch(_){}
+  } else {
+    document.getElementById('pwErr').textContent = 'Senha incorreta. Tente novamente.';
+    i.value = ''; i.focus();
+  }
+}
+(function initLock(){
+  let ok=false; try{ ok = sessionStorage.getItem('vida_unlocked')==='1'; }catch(_){}
+  if(ok){ document.getElementById('lock').style.display='none'; }
+  else { const i=document.getElementById('pw'); if(i) setTimeout(()=>i.focus(),120); }
+})();
+
 /* ---------- PWA: service worker ---------- */
 if('serviceWorker' in navigator){ window.addEventListener('load',()=>{ navigator.serviceWorker.register('./sw.js').catch(()=>{}); }); }
 </script>
